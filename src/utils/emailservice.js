@@ -1,9 +1,3 @@
-const nodemailer = require("nodemailer");
-const path = require("path");
-const mustache = require("mustache");
-const fs = require("fs");
-const moment = require('moment');
-
 const sendGridMail = require('@sendgrid/mail');
 sendGridMail.setApiKey(process.env.SENDGRID_API_KEY);
 const SEND_GRID_FROM = process.env.SENDGRID_FROM;

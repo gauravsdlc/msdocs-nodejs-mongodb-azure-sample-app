@@ -53,7 +53,7 @@ app.use(mongoSanitize());
 app.use(compression());
 
 // Define a list of trusted domains
-const allowedDomains = ['http://127.0.0.1:5173', 'https://qa-fils-app.corpsdlc.com'];
+// const allowedDomains = ['http://127.0.0.1:5173', 'https://qa-fils-app.corpsdlc.com'];
 
 // Configure CORS middleware with specific origin options
 const corsOptions = {
@@ -70,11 +70,11 @@ const corsOptions = {
 };
 
 // Use CORS middleware with options
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
 
 // enable cors
-// app.use(cors());
-// app.options('*', cors());
+app.use(cors());
+app.options('*', cors());
 
 
 // limit repeated failed requests to auth endpoints

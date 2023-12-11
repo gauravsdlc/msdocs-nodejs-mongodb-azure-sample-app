@@ -1,4 +1,3 @@
-const nodemailer = require('nodemailer');
 const logger = require('../config/logger');
 // var html_to_pdf = require('html-pdf-node');
 const sendGridEmail = require('@sendgrid/mail')
@@ -7,23 +6,15 @@ const REMOTE_URL_BASE_URL = process.env.BASE_URL || "https://qa-fils-app.corpsdl
 const fs = require('fs')
 const path = require('path');
 const { log } = require('console');
-const transport = nodemailer.createTransport({
-  host: process.env.SMTP_HOST,
-  port: 465,
-  secure: true,
-  auth: {
-    user: process.env.SMTP_USER,
-    pass: process.env.SMTP_PASS,
-  },
-});
 
-/* istanbul ignore next */
-if (process.env.NODE_ENV !== 'test') {
-  transport
-    .verify()
-    .then(() => logger.info('Connected to email server'))
-    .catch(() => logger.warn('Unable to connect to email server. Make sure you have configured the SMTP options in .env'));
-}
+
+// /* istanbul ignore next */
+// if (process.env.NODE_ENV !== 'test') {
+//   transport
+//     .verify()
+//     .then(() => logger.info('Connected to email server'))
+//     .catch(() => logger.warn('Unable to connect to email server. Make sure you have configured the SMTP options in .env'));
+// }
 
 /**
  * Send an email
@@ -198,7 +189,6 @@ function getEmailBodyFromTemplate(templateName, data) {
 }
 
 module.exports = {
-  transport,
   sendEmail,
   sendResetPasswordEmail,
   sendHtmlMail,

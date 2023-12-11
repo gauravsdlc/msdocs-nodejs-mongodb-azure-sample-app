@@ -1,5 +1,4 @@
 /* eslint-disable no-console */
-const nodemailer = require('nodemailer');
 const sendGridEmail = require('@sendgrid/mail')
 sendGridEmail.setApiKey(process.env.SENDGRID_API_KEY)
 const path = require("path");
@@ -7,26 +6,10 @@ const mustache = require("mustache");
 const fs = require("fs");
 const moment = require('moment');
 
-let transport = nodemailer.createTransport({
-    "host": process.env.SMTP_HOST,
-    "port": process.env.SMTP_PORT,
-    "auth": {
-        "user": process.env.SMTP_USER,
-        "pass": process.env.SMTP_PASS
-    }
-  });
+
 
 async function sendMail({ to, subject, html, from = process.env.EMAIL_FROM }) {
-    const smtpOptions = {
-        "host": process.env.SMTP_HOST,
-        "port": process.env.SMTP_PORT,
-        "auth": {
-            "user": process.env.SMTP_USER,
-            "pass": process.env.SMTP_PASS
-        }
-    }
-    const transporter = nodemailer.createTransport(smtpOptions);
-    await transporter.sendMail({ from, to, subject, html });
+    
 }
 
 
