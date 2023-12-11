@@ -1,0 +1,5 @@
+module.exports.addGlobalConfig = require('./controller.addGlobalConfig.js')
+module.exports.updateGlobalConfig = require('./controller.updateGlobalConfig.js')
+module.exports.getGlobalConfig = require('./controller.getGlobalConfig.js')
+module.exports.updateRate = require('./controller.updateRate.js')
+module.exports.getRate = require('./controller.getRate.js')

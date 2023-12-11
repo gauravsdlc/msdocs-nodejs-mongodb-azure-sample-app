@@ -1,0 +1,5 @@
+module.exports.generateApi = require('./controller.generateApi.js')
+module.exports.getAllApiKeys = require('./controller.getAllApiKeys.js')
+module.exports.revealApiKey = require('./controller.revealApiKey.js')
+module.exports.deleteApiKey = require('./controller.deleteApiKey.js')
+module.exports.getApiKey = require('./controller.getApiKey.js')

@@ -1,0 +1,230 @@
+{
+    "openapi": "3.0.3",
+    "info": {
+      "title": "Fils API doc",
+      "contact": {
+        "email": "contact@fils.com"
+      },
+      "version": "1.0.11"
+    },
+    "servers": [
+      {
+        "url": "http://localhost:3001"
+      }
+    ],
+    "tags": [
+      {
+        "name": "Organizations",
+        "description": "Get list of organizations",
+        "externalDocs": {
+          "description": "",
+          "url": "#"
+        }
+      },
+      {
+        "name": "Points",
+        "description": "Access to points",
+        "externalDocs": {
+          "description": "",
+          "url": "#"
+        }
+      }
+    ],
+    "paths": {
+      "/v1/organizations": {
+        "get": {
+          "tags": [
+            "Organizations"
+          ],
+          "summary": "Returns all organizations",
+          "description": "",
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/SuccessOrganizations"
+                  }
+                }
+              }
+            }
+          },
+          "security": [
+            {
+              "ApiKeyAuth": []
+            }
+          ]
+        }
+      },
+      "/v1/points/transfer": {
+        "post": {
+          "tags": [
+            "Points"
+          ],
+          "parameters": [
+            {
+              "in": "body",
+              "name": "body",
+              "description": "To transfer the points need valid data",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/Points"
+              }
+            }
+          ],
+          "summary": "Returns initiated points status",
+          "description": "",
+          "responses": {
+            "200": {
+              "description": "Success",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/SuccessPoints"
+                  }
+                }
+              }
+            }
+          },
+          "security": [
+            {
+              "ApiKeyAuth": []
+            }
+          ]
+        }
+      }
+      
+    },
+    "definitions": {
+      "Points": {
+        "type": "object",
+        "required": [
+          "refId",
+          "amount",
+          "orgId",
+          "organizationId",
+          "transferTo",
+          "customerId"
+        ],
+        "properties": {
+          "amount": {
+            "type": "integer",
+            "example": 100
+          },
+          "customerId": {
+            "type": "string",
+            "example": "1001"
+          },
+          "refId": {
+            "type": "string",
+            "example": "1001"
+          },
+          "orgId": {
+            "type": "string",
+            "example": "643e6098980313251092595d"
+          },
+          "transferTo": {
+            "type": "string",
+            "example": "80"
+          },
+          "organizationId": {
+            "type": "string",
+            "example": "74"
+          }
+        },
+        "xml": {
+          "name": "Pet"
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "Points": {
+          "type": "object",
+          "properties": {
+            "amount": {
+              "type": "integer",
+              "example": 100
+            },
+            "customerId": {
+              "type": "string",
+              "example": "1001"
+            },
+            "refId": {
+              "type": "string",
+              "example": "1001"
+            },
+            "orgId": {
+              "type": "string",
+              "example": "643e6098980313251092595d"
+            },
+            "transferTo": {
+              "type": "string",
+              "example": "80"
+            },
+            "organizationId": {
+              "type": "string",
+              "example": "74"
+            }
+          }
+        },
+        "SuccessPoints": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "example": "64364faff6b2a708f8580e68"
+            }
+          },
+          "xml": {
+            "name": "Points"
+          }
+        },
+        "SuccessOrganizations": {
+          "type": "object",
+          "properties": {
+            "_id": {
+              "type": "string",
+              "example": "Unique id"
+            },
+            "organizationId": {
+              "type": "string",
+              "example": "1001"
+            },
+            "orgName": {
+              "type": "string",
+              "example": "Organization Name"
+            }
+          },
+          "xml": {
+            "name": "Organizations"
+          }
+        }
+      },
+      "requestBodies": {
+        "Points": {
+          "description": "Pet object that needs to be added to the points",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Points"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/Points"
+              }
+            }
+          }
+        }
+      },
+      "securitySchemes": {
+        "ApiKeyAuth": {
+          "type": "apiKey",
+          "name": "x-api-key",
+          "in": "header"
+        }
+      }
+    }
+  }

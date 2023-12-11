@@ -1,0 +1,77 @@
+openapi: 3.0.3
+info:
+  title: Fils API doc
+  contact:
+    email: contact@fils.com
+  version: 1.0.11
+servers:
+- url: https://localhost:3001
+tags:
+- name: points
+  description: Access to points
+  externalDocs:
+    description: ""
+    url: "#"
+paths:
+  "/v1/points/tranfer":
+    post:
+      tags:
+      - points
+      summary: Returns inintited points status
+      description: ''
+      responses:
+        '200':
+          description: Success 
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/SuccessPoints"
+      security:
+      - ApiKeyAuth: []
+components:
+  schemas:
+    Points:
+      type: object
+      properties:
+        amount:
+          type: integer
+          example: 100
+        refId:
+          type: string
+          example: "10001"
+        customerId:
+          type: string
+          example: "10002"
+        orgId:
+          type: string
+          example: "643e6098980313251092595d"
+        organizationId:
+          type: string
+          example: "80"
+        transferTo:
+          type: string
+          example: "74"
+    SuccessPoints:
+      type: object
+      properties:
+        id:
+          type: string
+          example: "64364faff6b2a708f8580e68"
+      xml:
+        name: points
+  requestBodies:
+    Points:
+      description: Pet object that needs to be added to the points
+      content:
+        application/json:
+          schema:
+            "$ref": "#/components/schemas/Points"
+        application/xml:
+          schema:
+            "$ref": "#/components/schemas/Points"
+    
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      name: X-API-KEY
+      in: header

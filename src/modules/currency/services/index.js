@@ -1,0 +1,10 @@
+module.exports.addCurrency = require('./services.addCurrency.js')
+module.exports.listCurrencies = require('./services.listCurrencies.js')
+module.exports.changeCurrencyStatus = require('./services.changeCurrencyStatus.js')
+module.exports.getCurrency = require('./services.getCurrency.js')
+module.exports.deleteCurrencyById = require('./services.deleteCurrencyById.js')
+module.exports.listMyCurrencies = require('./services.listMyCurrencies.js')
+module.exports.updateCurrencyById = require('./services.updateCurrencyById.js')
+module.exports.currencyDetails = require('./docapi.index.js').currencyDetails
+module.exports.getCurrencyById = require('./docapi.index.js').getCurrencyById
+module.exports.listCurrency = require('./docapi.index.js').listCurrency

@@ -2,7 +2,7 @@ const { DefaultAzureCredential } = require("@azure/identity");
 const { SecretClient } = require("@azure/keyvault-secrets");
 
 const getSecret = async (secretName, keyVaultName) => {
-
+    console.log("getSecret ::", secretName, keyVaultName);
     if (!secretName || !keyVaultName) {
         throw Error("getSecret: Required params missing")
     }
